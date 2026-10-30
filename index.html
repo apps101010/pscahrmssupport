@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSCA HRMS Support</title>
+<meta name="description" content="Support for PSCA HRMS, the employee self-service app of the Punjab Safe Cities Authority.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f9fc;
+    --card: #ffffff;
+    --line: #e2e8f2;
+    --navy: #0b3d91;
+    --teal: #0d9488;
+    --amber: #e08a1e;
+    --text-hi: #10192b;
+    --text-lo: #5b6b85;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text-hi);
+    font-family: 'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1, h2, .eyebrow{ font-family:'Space Grotesk', sans-serif; }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding: 96px 24px 120px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(13,148,136,0.08), transparent 60%),
+      var(--bg);
+  }
+
+  .grid-bg{
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity:0.6;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 40%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 20%, black 40%, transparent 85%);
+  }
+
+  .hero h1{
+    position:relative;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    margin-bottom:18px;
+    color: var(--navy);
+  }
+
+  .hero p{
+    position:relative;
+    max-width:520px;
+    margin:0 auto;
+    color: var(--text-lo);
+    font-size:1.05rem;
+  }
+
+  /* ---------- MAIN ---------- */
+  .wrap{
+    max-width:760px;
+    margin: -64px auto 0;
+    padding: 0 24px 80px;
+    position:relative;
+    z-index:2;
+  }
+
+  .card{
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:36px;
+    box-shadow: 0 12px 32px rgba(15,35,70,0.06);
+  }
+
+  .contact-card{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    margin-bottom:28px;
+  }
+
+  @media (max-width:560px){
+    .contact-card{ grid-template-columns:1fr; }
+  }
+
+  .contact-item{
+    border-left:2px solid var(--teal);
+    padding-left:16px;
+  }
+
+  .contact-item .label{
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--text-lo);
+    margin-bottom:6px;
+  }
+
+  .contact-item .value{
+    font-size:1.02rem;
+    font-weight:500;
+    color: var(--text-hi);
+    word-break:break-word;
+  }
+
+  .contact-item a{
+    color: var(--text-hi);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .contact-item a:hover{
+    color: var(--teal);
+    border-color: var(--teal);
+  }
+
+  .response-tag{
+    margin-top:24px;
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    font-size:0.82rem;
+    color: var(--text-lo);
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    width:100%;
+    white-space: normal;
+  }
+  .response-tag::before{
+    content:"";
+    flex-shrink:0;
+    margin-top:6px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background: var(--amber);
+  }
+
+  /* ---------- FAQ ---------- */
+  .section-title{
+    font-size:1.3rem;
+    font-weight:600;
+    margin: 56px 0 20px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color: var(--navy);
+  }
+  .section-title::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+
+  .faq-item{
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .faq-item:last-child{ border-bottom:none; }
+
+  .faq-item .q{
+    font-weight:600;
+    font-size:1.02rem;
+    margin-bottom:8px;
+    color: var(--text-hi);
+  }
+  .faq-item .a{
+    color: var(--text-lo);
+    font-size:0.96rem;
+  }
+  .faq-item .a a{ color: var(--teal); text-decoration:none; }
+  .faq-item .a a:hover{ text-decoration:underline; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:36px 24px 48px;
+    color: var(--text-lo);
+    font-size:0.85rem;
+  }
+  footer .org{
+    color: var(--text-hi);
+    font-weight:500;
+  }
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+
+  <h1>PSCA HRMS<br>Support</h1>
+  <p>Questions, issues, or feedback about PSCA HRMS, the employee self-service app of the Punjab Safe Cities Authority. Our team is here to help.</p>
+</section>
+
+<div class="wrap">
+  <div class="card contact-card">
+    <div class="contact-item">
+      <div class="label mono">Email</div>
+      <div class="value"><a href="mailto:info@psca.gop.pk">info@psca.gop.pk</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="label mono">Phone</div>
+      <div class="value"><a href="tel:+924299051608">(+92)-42-9905-1605(08)</a></div>
+    </div>
+    <div class="response-tag mono">Typical response time: 1–2 business days</div>
+  </div>
+
+  <div class="section-title">Frequently asked</div>
+
+  <div class="card">
+    <div class="faq-item">
+      <div class="q">Who can use PSCA HRMS?</div>
+      <div class="a">PSCA HRMS is for employees of the Punjab Safe Cities Authority. There is no public sign-up: accounts are created by HR, and you sign in with your employee ID and the password HR gives you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">I forgot my password. What should I do?</div>
+      <div class="a">Passwords are reset by HR. Please contact HR to have your password reset, then sign in with your employee ID and the new password.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">I can't sign in on my new phone.</div>
+      <div class="a">Your account is linked to your registered device. The sign-in screen shows your phone's <strong>Device ID</strong>, which you can copy with a tap. Send it, along with your employee ID, to <a href="mailto:info@psca.gop.pk">info@psca.gop.pk</a> so your new device can be registered.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">I'm not receiving notifications.</div>
+      <div class="a">Make sure notifications are allowed for PSCA HRMS in your phone's settings. On iPhone, go to Settings → Notifications → PSCA HRMS; on Android, go to Settings → Apps → PSCA HRMS → Notifications. Then sign out and sign in again.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">How do I report a technical issue with the app?</div>
+      <div class="a">Email <a href="mailto:info@psca.gop.pk">info@psca.gop.pk</a> with your employee ID, your phone model, a description of the issue, and a screenshot if you have one.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">How do I request a new feature?</div>
+      <div class="a">Send your suggestion to <a href="mailto:info@psca.gop.pk">info@psca.gop.pk</a>. We read every message from our users.</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">Who builds and maintains this app?</div>
+      <div class="a">PSCA HRMS is developed and maintained by the Punjab Safe Cities Authority.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 <span class="org">Punjab Safe Cities Authority</span>. All rights reserved.
+</footer>
+
+</body>
+</html>
